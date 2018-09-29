@@ -1,0 +1,6 @@
+---
+- hosts: all
+  remote_user: admin
+  roles:
+    - debian-stretch
+  become: yes

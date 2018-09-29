@@ -1,0 +1,31 @@
+aws_access_key = "Accesskey"
+aws_secret_key = "Secretkey"
+aws_keyname = "KeypairName"
+private_key = "path/to/private/key"
+region = "us-west-2"
+vol_size = 400
+vol_type = "gp2"
+instance_size = "m4.xlarge"
+num_nodes = 3
+
+//Username to tag instances/aws resources with
+username =
+
+// Create a stress box of the same size with the same AMI
+create_stressbox = false
+
+// Create an extra volume and attach it to each node at 1/4 the size;
+// Mostly useful for testing LVM Cache + archiving/you want some RAID setup
+create_extra_volume_per_node = false
+extra_volume_vol_size = 100
+extra_volume_vol_type = "standard"
+
+// Only for tags; will actually edit YAML in the future
+cluster_name = "Waboku"
+
+// Create an extra DC in the target region (defaults to us-west-1 if create_extra_dc_region is not specified)
+create_extra_dc = false
+create_extra_dc_region = us-west-1
+dc_name = "Waboku"
+extra_dc_name = "Bokusapp"
+extra_dc_num_nodes = 2
