@@ -19,4 +19,4 @@ Under the hood it's Packer + Ansible for AMI creation and Terraform for provisio
 
 You must start by using packer to create a base AMI. See README in the packer directory to create the AMI, then you can use terraform to provision clusters following the README in the terraform directory.
 
-
+Please see https://www.instaclustr.com/support/documentation/announcements/instaclustr-open-source-project-status/ for Instaclustr support status of this project
