@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc" {
   instance_tenancy     = "default"
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp"
+    Name       = "${var.username}:${var.cluster_name}:cccp"
     managed_by = "terraform"
   }
 }
@@ -13,7 +13,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.vpc.id}"
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp"
+    Name       = "${var.username}:${var.cluster_name}:cccp"
     managed_by = "terraform"
   }
 }

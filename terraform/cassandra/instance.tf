@@ -1,9 +1,9 @@
-data "aws_ami" "ccp-ami" {
+data "aws_ami" "cccp-ami" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["ccp-*"]
+    values = ["cccp-*"]
   }
 
   owners = ["379101102735", "003793401444", "494770124270"]
@@ -12,7 +12,7 @@ data "aws_ami" "ccp-ami" {
 resource "aws_instance" "cassandra-nodes" {
   count                  = "${var.num_nodes}"
   subnet_id              = "${element(aws_subnet.public_subnets.*.id, count.index)}"
-  ami                    = "${data.aws_ami.ccp-ami.id}"
+  ami                    = "${data.aws_ami.cccp-ami.id}"
   instance_type          = "${var.instance_size}"
   key_name               = "${var.aws_keyname}"
   availability_zone      = "${element(data.aws_availability_zones.available.names, count.index)}"
@@ -20,7 +20,7 @@ resource "aws_instance" "cassandra-nodes" {
   vpc_security_group_ids = ["${aws_security_group.sg.id}"]
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp-instance-${element(data.aws_availability_zones.available.names, count.index)}"
+    Name       = "${var.username}:${var.cluster_name}:cccp-instance-${element(data.aws_availability_zones.available.names, count.index)}"
     managed_by = "terraform"
   }
 }
@@ -152,7 +152,7 @@ EOF
 resource "aws_instance" "cassandra-stress-box" {
   count                       = "${var.create_stressbox == true ? 1 : 0}"
   subnet_id                   = "${element(aws_subnet.public_subnets.*.id, 1)}"
-  ami                         = "${data.aws_ami.ccp-ami.id}"
+  ami                         = "${data.aws_ami.cccp-ami.id}"
   instance_type               = "${var.instance_size}"
   key_name                    = "${var.aws_keyname}"
   vpc_security_group_ids      = ["${aws_security_group.sg.id}"]
@@ -160,7 +160,7 @@ resource "aws_instance" "cassandra-stress-box" {
   associate_public_ip_address = true
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp-stressbox"
+    Name       = "${var.username}:${var.cluster_name}:cccp-stressbox"
     managed_by = "terraform"
   }
 }

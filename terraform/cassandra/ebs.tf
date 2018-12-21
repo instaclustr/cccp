@@ -5,7 +5,7 @@ resource "aws_ebs_volume" "datavolume" {
   type              = "${var.vol_type}"
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp-volume-${element(data.aws_availability_zones.available.names, count.index)}"
+    Name       = "${var.username}:${var.cluster_name}:cccp-volume-${element(data.aws_availability_zones.available.names, count.index)}"
     managed_by = "terraform"
   }
 }
@@ -25,7 +25,7 @@ resource "aws_volume_attachment" "cassandra-data-volume-ssd" {
 //  type = "${var.extra_volume_vol_type}"
 //
 //  tags {
-//    Name = "${var.username}:${var.cluster_name}:ccp-extravolume-${element(data.aws_availability_zones.available.names, count.index)}"
+//    Name = "${var.username}:${var.cluster_name}:cccp-extravolume-${element(data.aws_availability_zones.available.names, count.index)}"
 //    managed_by = "terraform"
 //  }
 //}

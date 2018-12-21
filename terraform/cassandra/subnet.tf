@@ -8,7 +8,7 @@ resource "aws_subnet" "public_subnets" {
   assign_ipv6_address_on_creation = "false"
 
   tags {
-    Name       = "${var.username}:${var.cluster_name}:ccp-public-${element(data.aws_availability_zones.available.names, count.index)}"
+    Name       = "${var.username}:${var.cluster_name}:cccp-public-${element(data.aws_availability_zones.available.names, count.index)}"
     managed_by = "terraform"
   }
 }
